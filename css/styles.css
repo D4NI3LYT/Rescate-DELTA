@@ -1,0 +1,126 @@
+/* Reset básico para márgenes y fuentes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Estilos del Header y Navegación */
+.header-principal {
+    background-color: #0b3d91; /* Azul corporativo/emergencia */
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo-container h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.badge-role {
+    font-size: 0.8rem;
+    background-color: #d9534f; /* Rojo alerta */
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.navegacion ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navegacion a {
+    color: #cfd8dc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navegacion a:hover, .navegacion a.activo {
+    color: #ffffff;
+    border-bottom: 2px solid #d9534f;
+}
+
+/* Contenedor Principal */
+.contenedor-principal {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.bienvenida {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1rem;
+}
+
+/* Grid para las tarjetas de los módulos */
+.modulos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.tarjeta-modulo {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-top: 4px solid #0b3d91;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-modulo h3 {
+    color: #0b3d91;
+    margin-bottom: 0.5rem;
+}
+
+.tarjeta-modulo p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
+/* Botones */
+.btn-primario {
+    display: inline-block;
+    background-color: #0b3d91;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primario:hover {
+    background-color: #082d6b;
+}
+
+/* Estilos del Footer */
+.footer-principal {
+    background-color: #263238;
+    color: #90a4ae;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
