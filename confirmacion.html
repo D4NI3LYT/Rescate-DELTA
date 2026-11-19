@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rescate Delta · Confirmación</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">RD</span><span class="name">Rescate Delta</span></a>
+    <div class="links">
+      <a href="index.html">Inicio</a>
+      <a href="solicitudes.html">Solicitudes</a>
+      <a href="inventario.html">Inventario</a>
+      <a href="priorizacion.html">Priorización</a>
+      <a class="active" href="confirmacion.html">Confirmación</a>
+      <a href="auditoria.html">Auditoría</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <header class="page-head">
+    <span class="eyebrow">Módulo 03 · Supervisor e Inventario</span>
+    <h1 class="title">Confirmación y conciliación</h1>
+    <p class="lede">Una sola reserva válida por lote y movimientos comprobados contra el inventario físico.</p>
+  </header>
+
+  <!-- Concurrencia -->
+  <h2 class="section" style="margin-top:0">Concurrencia sobre el último lote</h2>
+  <p class="section-sub">Dos operadores solicitan al mismo tiempo las últimas 50 unidades. El bloqueo <code class="inline">FOR UPDATE</code> garantiza que solo una transacción prospere.</p>
+
+  <div class="versus">
+    <div class="card tx ok">
+      <span class="badge solid dot" style="margin-bottom:12px">CONFIRMADA</span>
+      <h3>Operador A · SOL_URG_992</h3>
+      <p>Obtiene el candado de fila sobre LOTE_EMERGENCIA_01, descuenta 50 unidades y ejecuta COMMIT.</p>
+      <code class="inline">cantidad_disponible: 50 → 0</code>
+    </div>
+    <div class="vs">vs.</div>
+    <div class="card tx no">
+      <span class="badge line dot" style="margin-bottom:12px">RECHAZADA</span>
+      <h3>Operador B · SOL_URG_993</h3>
+      <p>Espera la liberación del candado, lee saldo 0 y la capa lógica aborta con el mensaje “Lote agotado”.</p>
+      <code class="inline">cantidad_disponible = 0 → ROLLBACK</code>
+    </div>
+  </div>
+  <p class="hint" style="margin-top:10px">Ambos intentos quedan registrados en la bitácora de auditoría.</p>
+
+  <!-- Reservas -->
+  <h2 class="section">Reservas</h2>
+  <div class="table-wrap" style="margin-top:16px">
+    <table class="t">
+      <thead><tr><th>Reserva</th><th>Solicitud</th><th>Lote</th><th class="r">Cantidad</th><th>Aprobación</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td class="id">RES-0001</td><td>SOL_URG_992</td><td>LOTE_EMERGENCIA_01</td><td class="r">50</td><td>Supervisor</td><td><span class="badge solid dot">Confirmada</span></td></tr>
+        <tr><td class="id">RES-0002</td><td>SOL_URG_993</td><td>LOTE_EMERGENCIA_01</td><td class="r">50</td><td>—</td><td><span class="badge line dot">Rechazada</span></td></tr>
+        <tr><td class="id">RES-0003</td><td>REQ-994-DELTA</td><td>LOTE_2026_B07</td><td class="r">200</td><td>Pendiente</td><td><span class="badge warn dot">En espera</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Conciliación -->
+  <h2 class="section">Conciliación de inventario</h2>
+  <p class="section-sub">Existencias antes y después de cada movimiento, contrastadas con el conteo físico.</p>
+  <div class="table-wrap">
+    <table class="t">
+      <thead><tr><th>Lote</th><th class="r">Antes</th><th>Movimiento</th><th class="r">Después</th><th class="r">Físico</th><th>Resultado</th></tr></thead>
+      <tbody>
+        <tr><td class="id">LOTE_EMERGENCIA_01</td><td class="r">50</td><td>Salida −50</td><td class="r">0</td><td class="r">0</td><td><span class="badge solid dot">Conciliado</span></td></tr>
+        <tr><td class="id">LOTE_2026_B07</td><td class="r">300</td><td>Salida −30</td><td class="r">270</td><td class="r">270</td><td><span class="badge solid dot">Conciliado</span></td></tr>
+        <tr><td class="id">LOTE_2026_A12</td><td class="r">120</td><td>Entrada +10</td><td class="r">130</td><td class="r">128</td><td><span class="badge warn dot">Discrepancia · −2</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Roles -->
+  <h2 class="section">Control de acceso</h2>
+  <div class="card beige" style="margin-top:16px">
+    <h3>Salida de inventario restringida</h3>
+    <p>Un usuario con rol <strong style="color:var(--ink)">Operador</strong> no puede ejecutar <code class="inline">POST /api/inventario/salida</code>. La solicitud responde <span class="badge line">403 Forbidden</span>. Solo el supervisor autoriza la salida definitiva.</p>
+  </div>
+
+</main>
+
+<footer><div class="inner"><span>Rescate Delta · Operación Nexo</span><span>Datos sintéticos de demostración</span></div></footer>
+</body>
+</html>

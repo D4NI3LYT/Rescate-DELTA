@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rescate Delta · Auditoría</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">RD</span><span class="name">Rescate Delta</span></a>
+    <div class="links">
+      <a href="index.html">Inicio</a>
+      <a href="solicitudes.html">Solicitudes</a>
+      <a href="inventario.html">Inventario</a>
+      <a href="priorizacion.html">Priorización</a>
+      <a href="confirmacion.html">Confirmación</a>
+      <a class="active" href="auditoria.html">Auditoría</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <header class="page-head">
+    <span class="eyebrow">Trazabilidad · Perfil Auditor</span>
+    <h1 class="title">Bitácora de auditoría</h1>
+    <p class="lede">Registro inmutable de quién hizo qué, cuándo y con qué resultado. Solo lectura.</p>
+  </header>
+
+  <div class="toolbar">
+    <input class="search" type="search" placeholder="Buscar por usuario, ticket o acción…">
+    <button class="btn">Rol</button>
+    <button class="btn">Resultado</button>
+    <button class="btn">Fecha</button>
+  </div>
+
+  <div class="table-wrap">
+    <table class="t">
+      <thead><tr><th>Marca de tiempo</th><th>Usuario</th><th>Rol</th><th>Acción</th><th>Referencia</th><th>IP</th><th>Resultado</th></tr></thead>
+      <tbody>
+        <tr><td class="id">2026-11-13 10:15:30Z</td><td>USR_OP_01</td><td><span class="badge soft">Operador</span></td><td>Registro de solicitud</td><td>REQ-993-DELTA</td><td>192.168.1.5</td><td><span class="badge solid dot">Exitoso</span></td></tr>
+        <tr><td class="id">2026-11-13 10:15:41Z</td><td>SISTEMA</td><td><span class="badge off">Algoritmo</span></td><td>Algoritmo ejecutado</td><td>REQ-993-DELTA</td><td>—</td><td><span class="badge solid dot">Recomendación generada</span></td></tr>
+        <tr><td class="id">2026-11-13 10:16:02Z</td><td>USR_SUP_01</td><td><span class="badge warn">Supervisor</span></td><td>Aprobación de reserva</td><td>Inventario_Lotes</td><td>192.168.1.9</td><td><span class="badge solid dot">Aprobada</span></td></tr>
+        <tr><td class="id">2026-11-13 10:16:03Z</td><td>USR_OP_01</td><td><span class="badge soft">Operador</span></td><td>Reserva crítica · últimas 50 uds</td><td>LOTE_EMERGENCIA_01</td><td>192.168.1.5</td><td><span class="badge solid dot">Confirmada</span></td></tr>
+        <tr><td class="id">2026-11-13 10:16:03Z</td><td>USR_OP_02</td><td><span class="badge soft">Operador</span></td><td>Intento concurrente rechazado</td><td>LOTE_EMERGENCIA_01</td><td>192.168.1.7</td><td><span class="badge line dot">Rechazada</span></td></tr>
+        <tr><td class="id">2026-11-13 10:17:20Z</td><td>USR_OP_02</td><td><span class="badge soft">Operador</span></td><td>POST /api/inventario/salida</td><td>—</td><td>192.168.1.7</td><td><span class="badge line dot">403 Forbidden</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="hint" style="margin-top:10px">Muestra de 5,000 eventos sintéticos almacenados en NoSQL.</p>
+
+  <h2 class="section">Estructura de un evento</h2>
+  <p class="section-sub">Cada documento de la bitácora conserva la acción, la hora y el origen.</p>
+  <div class="formula">{
+  "document_id": "60f7a9b…",
+  "timestamp": "2026-11-13T10:15:30Z",
+  "evento": { "accion": "Intento concurrente rechazado", "ip": "192.168.1.5" }
+}</div>
+
+</main>
+
+<footer><div class="inner"><span>Rescate Delta · Operación Nexo</span><span>Datos sintéticos de demostración</span></div></footer>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rescate Delta · Priorización</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">RD</span><span class="name">Rescate Delta</span></a>
+    <div class="links">
+      <a href="index.html">Inicio</a>
+      <a href="solicitudes.html">Solicitudes</a>
+      <a href="inventario.html">Inventario</a>
+      <a class="active" href="priorizacion.html">Priorización</a>
+      <a href="confirmacion.html">Confirmación</a>
+      <a href="auditoria.html">Auditoría</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <header class="page-head">
+    <span class="eyebrow">Módulo 02 · Perfil Supervisor</span>
+    <h1 class="title">Priorización y despacho</h1>
+    <p class="lede">Recomendación explicable para cada solicitud. El sistema sugiere; el supervisor autoriza.</p>
+  </header>
+
+  <!-- Solicitud en revisión -->
+  <div class="card beige">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+      <div>
+        <span class="eyebrow" style="margin-bottom:4px">Solicitud en revisión</span>
+        <h3 style="font-family:var(--serif);font-size:22px;margin:0">REQ-993-DELTA</h3>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span class="badge solid">P1 · Alta urgencia</span>
+        <span class="badge line">Vacuna antitetánica × 50</span>
+        <span class="badge line">Plazo: 20 nov · 14:00</span>
+      </div>
+    </div>
+    <p style="margin-top:10px">Destino: 25.78, −100.20</p>
+  </div>
+
+  <h2 class="section">Centros evaluados</h2>
+  <p class="section-sub">Ordenados por costo logístico f(x). Menor valor, mejor opción.</p>
+
+  <div class="grid">
+    <div class="card reco best">
+      <div>
+        <h3>CEN_MONTERREY_NTE <span class="badge solid">Recomendado</span></h3>
+        <ul>
+          <li>Inventario completo disponible (50 / 50).</li>
+          <li>Distancia de 15 km, sin alertas viales.</li>
+          <li>Advertencia: el lote caduca en menos de 30 días.</li>
+        </ul>
+        <div class="actions">
+          <button class="btn dark">Aprobar reserva</button>
+          <button class="btn">Rechazar</button>
+        </div>
+      </div>
+      <div class="score"><div class="n">17.5</div><div class="t">f(x) = g(x) + h(x)</div></div>
+    </div>
+
+    <div class="card reco">
+      <div>
+        <h3>CEN_APODACA <span class="badge soft">Alternativa</span></h3>
+        <ul>
+          <li>Inventario suficiente (80 / 50).</li>
+          <li>Distancia de 22 km y retraso estimado de +9 min por tráfico.</li>
+        </ul>
+      </div>
+      <div class="score"><div class="n" style="color:var(--muted)">31.0</div><div class="t">f(x) = g(x) + h(x)</div></div>
+    </div>
+
+    <div class="card reco discard">
+      <div>
+        <h3 style="color:var(--muted)">CEN_ESCOBEDO <span class="badge off">Descartado</span></h3>
+        <ul style="color:var(--muted)">
+          <li>Inventario insuficiente (0 / 50).</li>
+        </ul>
+      </div>
+      <div class="score"><div class="n" style="color:var(--beige-400)">—</div><div class="t">No factible</div></div>
+    </div>
+  </div>
+
+  <h2 class="section">Cómo se decide</h2>
+  <div class="grid c3" style="margin-top:16px">
+    <div class="card"><span class="num">01</span><h3>Filtro de viabilidad</h3><p>Se descartan los centros cuya existencia es menor a la cantidad requerida. Si ninguno califica, se informa “Sin alternativas factibles”.</p></div>
+    <div class="card"><span class="num">02</span><h3>Costo de ruta</h3><div class="formula" style="margin:6px 0 10px">f(x) = g(x) + h(x)</div><p>g: distancia en km. h: retraso por tráfico o alertas.</p></div>
+    <div class="card"><span class="num">03</span><h3>Prioridad y desempate</h3><p>Las solicitudes P1 optimizan por menor f(x). Ante empate entre P1, gana el centro con menor costo de ruta.</p></div>
+  </div>
+
+</main>
+
+<footer><div class="inner"><span>Rescate Delta · Operación Nexo</span><span>Datos sintéticos de demostración</span></div></footer>
+</body>
+</html>

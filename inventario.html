@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rescate Delta · Inventario</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">RD</span><span class="name">Rescate Delta</span></a>
+    <div class="links">
+      <a href="index.html">Inicio</a>
+      <a href="solicitudes.html">Solicitudes</a>
+      <a class="active" href="inventario.html">Inventario</a>
+      <a href="priorizacion.html">Priorización</a>
+      <a href="confirmacion.html">Confirmación</a>
+      <a href="auditoria.html">Auditoría</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <header class="page-head">
+    <span class="eyebrow">Módulo 01 · Responsable de inventario</span>
+    <h1 class="title">Inventario por lotes</h1>
+    <p class="lede">Existencias reales por centro, con control de caducidad, reservas y estado de cada lote.</p>
+  </header>
+
+  <!-- Resumen -->
+  <div class="grid c4">
+    <div class="card stat"><div class="label">Lotes activos</div><div class="value">4</div><div class="meta">En 4 centros logísticos</div></div>
+    <div class="card stat"><div class="label">Unidades disponibles</div><div class="value">520</div><div class="meta">Sin reservas aplicadas</div></div>
+    <div class="card stat"><div class="label">Por caducar</div><div class="value">1</div><div class="meta">Vence en menos de 30 días</div></div>
+    <div class="card stat"><div class="label">Sin existencias</div><div class="value">2</div><div class="meta">Agotado o dañado</div></div>
+  </div>
+
+  <!-- Reglas -->
+  <h2 class="section">Reglas de disponibilidad</h2>
+  <div class="grid c3" style="margin-top:16px">
+    <div class="card beige"><h3>Inventario factible</h3><p><code class="inline">Σ Lotes activos − Σ Lotes reservados</code></p></div>
+    <div class="card beige"><h3>Caducidad</h3><p>Los lotes con menos de 30 días generan una advertencia automática al supervisor.</p></div>
+    <div class="card beige"><h3>Lotes dañados</h3><p>Se descartan del inventario factible y no pueden reservarse.</p></div>
+  </div>
+
+  <!-- Tabla -->
+  <h2 class="section">Existencias</h2>
+  <div class="toolbar" style="margin-top:14px">
+    <input class="search" type="search" placeholder="Buscar por lote, artículo o centro…">
+    <button class="btn">Centro</button>
+    <button class="btn">Categoría</button>
+    <button class="btn">Ordenar</button>
+    <span class="spacer"></span>
+    <button class="btn dark">+ Nuevo lote</button>
+  </div>
+
+  <div class="table-block">
+    <div class="table-head"><h3>Disponibles</h3><span class="count">4 lotes</span></div>
+    <div class="table-wrap">
+      <table class="t">
+        <thead><tr><th>Lote</th><th>Artículo</th><th>Centro</th><th class="r">Disponible</th><th style="width:150px">Nivel</th><th>Caducidad</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="id">LOTE_2026_X99</td>
+            <td>Vacuna antitetánica<span class="sub">Insumo médico crítico</span></td>
+            <td>CEN_MONTERREY_NTE</td>
+            <td class="r">50</td>
+            <td><div class="meter" style="margin:0"><span style="width:25%"></span></div></td>
+            <td>20 nov 2026</td>
+            <td><span class="badge warn dot">Caduca &lt; 30 días</span></td>
+          </tr>
+          <tr>
+            <td class="id">LOTE_EMERGENCIA_01</td>
+            <td>Raciones de alimento<span class="sub">Alimentos</span></td>
+            <td>CEN_MONTERREY_NTE</td>
+            <td class="r">50</td>
+            <td><div class="meter" style="margin:0"><span style="width:25%"></span></div></td>
+            <td>15 mar 2027</td>
+            <td><span class="badge solid dot">Activo</span></td>
+          </tr>
+          <tr>
+            <td class="id">LOTE_2026_A12</td>
+            <td>Kit de rescate<span class="sub">Equipo</span></td>
+            <td>CEN_APODACA</td>
+            <td class="r">120</td>
+            <td><div class="meter" style="margin:0"><span style="width:60%"></span></div></td>
+            <td>—</td>
+            <td><span class="badge solid dot">Activo</span></td>
+          </tr>
+          <tr>
+            <td class="id">LOTE_2026_B07</td>
+            <td>Suministros médicos<span class="sub">Insumo médico</span></td>
+            <td>CEN_GUADALUPE</td>
+            <td class="r">300</td>
+            <td><div class="meter" style="margin:0"><span style="width:100%"></span></div></td>
+            <td>01 ago 2027</td>
+            <td><span class="badge solid dot">Activo</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="table-block">
+    <div class="table-head"><h3>No disponibles</h3><span class="count">2 lotes</span></div>
+    <div class="table-wrap">
+      <table class="t">
+        <thead><tr><th>Lote</th><th>Artículo</th><th>Centro</th><th class="r">Disponible</th><th style="width:150px">Nivel</th><th>Caducidad</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="id">LOTE_2026_C03</td>
+            <td>Vacuna antitetánica<span class="sub">Insumo médico crítico</span></td>
+            <td>CEN_ESCOBEDO</td>
+            <td class="r">0</td>
+            <td><div class="meter soft" style="margin:0"><span style="width:0%"></span></div></td>
+            <td>10 dic 2026</td>
+            <td><span class="badge line dot">Agotado</span></td>
+          </tr>
+          <tr>
+            <td class="id">LOTE_2026_D15</td>
+            <td>Raciones de alimento<span class="sub">Alimentos</span></td>
+            <td>CEN_APODACA</td>
+            <td class="r">40</td>
+            <td><div class="meter soft" style="margin:0"><span style="width:20%"></span></div></td>
+            <td>01 oct 2026</td>
+            <td><span class="badge off dot">Dañado · descartado</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Centros -->
+  <h2 class="section">Centros logísticos</h2>
+  <div class="grid c4" style="margin-top:16px">
+    <div class="card"><h3>CEN_MONTERREY_NTE</h3><p>100 uds · 2 lotes</p><div style="margin-top:12px"><span class="badge soft dot">Operativo</span></div></div>
+    <div class="card"><h3>CEN_APODACA</h3><p>120 uds · 1 lote</p><div style="margin-top:12px"><span class="badge soft dot">Operativo</span></div></div>
+    <div class="card"><h3>CEN_GUADALUPE</h3><p>300 uds · 1 lote</p><div style="margin-top:12px"><span class="badge soft dot">Operativo</span></div></div>
+    <div class="card"><h3>CEN_ESCOBEDO</h3><p>0 uds · sin existencias</p><div style="margin-top:12px"><span class="badge off dot">Sin stock</span></div></div>
+  </div>
+
+</main>
+
+<footer><div class="inner"><span>Rescate Delta · Operación Nexo</span><span>Datos sintéticos de demostración</span></div></footer>
+</body>
+</html>

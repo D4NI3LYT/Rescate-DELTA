@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rescate Delta · Solicitudes</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">RD</span><span class="name">Rescate Delta</span></a>
+    <div class="links">
+      <a href="index.html">Inicio</a>
+      <a class="active" href="solicitudes.html">Solicitudes</a>
+      <a href="inventario.html">Inventario</a>
+      <a href="priorizacion.html">Priorización</a>
+      <a href="confirmacion.html">Confirmación</a>
+      <a href="auditoria.html">Auditoría</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <header class="page-head">
+    <span class="eyebrow">Módulo 01 · Perfil Operador</span>
+    <h1 class="title">Solicitudes</h1>
+    <p class="lede">Registra una necesidad con todos sus datos obligatorios y consulta el estado de atención.</p>
+  </header>
+
+  <!-- Formulario -->
+  <form class="card" action="#" onsubmit="return false;">
+    <h3 style="font-family:var(--serif);font-size:18px;margin-bottom:18px">Nueva solicitud</h3>
+    <div class="form-grid">
+      <div>
+        <label for="art">Artículo</label>
+        <select id="art" required>
+          <option>Vacuna antitetánica liofilizada</option>
+          <option>Raciones de alimento</option>
+          <option>Kit de rescate</option>
+          <option>Suministros médicos</option>
+        </select>
+      </div>
+      <div>
+        <label for="cant">Cantidad</label>
+        <input id="cant" type="number" min="1" placeholder="Ej. 50" required>
+        <div class="hint">Debe ser mayor a 0.</div>
+      </div>
+      <div>
+        <label for="prio">Prioridad</label>
+        <select id="prio" required>
+          <option>P1 · Alta urgencia (riesgo vital)</option>
+          <option>P2 · Media</option>
+          <option>P3 · Baja</option>
+        </select>
+      </div>
+      <div>
+        <label for="dest">Ubicación de destino</label>
+        <input id="dest" type="text" placeholder="Coordenadas o zona" required>
+      </div>
+      <div>
+        <label for="vent">Ventana horaria límite</label>
+        <input id="vent" type="datetime-local" required>
+        <div class="hint">Campo obligatorio.</div>
+      </div>
+      <div class="form-actions">
+        <button class="btn dark" type="submit" style="width:100%">Registrar solicitud</button>
+      </div>
+    </div>
+  </form>
+
+  <h2 class="section">Seguimiento</h2>
+  <div class="toolbar" style="margin-top:14px">
+    <input class="search" type="search" placeholder="Buscar por ID, artículo o destino…">
+    <button class="btn">Filtrar</button>
+    <button class="btn">Ordenar</button>
+    <span class="spacer"></span>
+    <button class="btn dark">+ Nueva solicitud</button>
+  </div>
+
+  <div class="table-block">
+    <div class="table-head"><h3>En proceso</h3><span class="count">3 solicitudes</span></div>
+    <div class="table-wrap">
+      <table class="t">
+        <thead><tr><th>ID</th><th>Artículo</th><th class="r">Cantidad</th><th>Prioridad</th><th>Destino</th><th>Plazo</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td class="id">REQ-993-DELTA</td><td>Vacuna antitetánica</td><td class="r">50</td><td><span class="badge solid">P1 · Alta urgencia</span></td><td>25.78, −100.20</td><td>20 nov · 14:00</td><td><span class="badge warn dot">En revisión</span></td></tr>
+          <tr><td class="id">REQ-994-DELTA</td><td>Raciones de alimento</td><td class="r">200</td><td><span class="badge solid">P1</span></td><td>25.65, −100.31</td><td>20 nov · 18:00</td><td><span class="badge soft dot">Recomendada</span></td></tr>
+          <tr><td class="id">REQ-995-DELTA</td><td>Kit de rescate</td><td class="r">12</td><td><span class="badge soft">P2</span></td><td>25.71, −100.09</td><td>21 nov · 09:00</td><td><span class="badge off dot">Capturada</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="table-block">
+    <div class="table-head"><h3>Atendidas</h3><span class="count">2 solicitudes</span></div>
+    <div class="table-wrap">
+      <table class="t">
+        <thead><tr><th>ID</th><th>Artículo</th><th class="r">Cantidad</th><th>Prioridad</th><th>Destino</th><th>Plazo</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td class="id">REQ-990-DELTA</td><td>Suministros médicos</td><td class="r">30</td><td><span class="badge soft">P2</span></td><td>25.80, −100.15</td><td>18 nov · 08:00</td><td><span class="badge solid dot">Confirmada</span></td></tr>
+          <tr><td class="id">REQ-991-DELTA</td><td>Raciones de alimento</td><td class="r">80</td><td><span class="badge off">P3</span></td><td>25.60, −100.28</td><td>17 nov · 12:00</td><td><span class="badge solid dot">Confirmada</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="table-block">
+    <div class="table-head"><h3>Sin alternativa factible</h3><span class="count">1 solicitud</span></div>
+    <div class="table-wrap">
+      <table class="t">
+        <thead><tr><th>ID</th><th>Artículo</th><th class="r">Cantidad</th><th>Prioridad</th><th>Destino</th><th>Plazo</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td class="id">REQ-992-DELTA</td><td>Vacuna antitetánica</td><td class="r">50</td><td><span class="badge solid">P1</span></td><td>25.74, −100.22</td><td>19 nov · 10:00</td><td><span class="badge line dot">Lote agotado</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<footer><div class="inner"><span>Rescate Delta · Operación Nexo</span><span>Datos sintéticos de demostración</span></div></footer>
+</body>
+</html>

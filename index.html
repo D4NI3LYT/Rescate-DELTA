@@ -1,64 +1,115 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rescate Delta - Operación Nexo</title>
-    <!-- Vinculación del archivo CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rescate Delta · Inicio</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <header class="header-principal">
-        <div class="logo-container">
-            <h1>Rescate Delta</h1>
-            <span class="badge-role">Perfil: Supervisor</span>
-        </div>
-        <nav class="navegacion">
-            <ul>
-                <li><a href="index.html" class="activo">Dashboard</a></li>
-                <li><a href="solicitudes.html">Solicitudes y Existencias</a></li>
-                <li><a href="despacho.html">Priorización y Despacho</a></li>
-                <li><a href="conciliacion.html">Confirmación y Conciliación</a></li>
-            </ul>
-        </nav>
-    </header>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">RD</span><span class="name">Rescate Delta</span></a>
+    <div class="links">
+      <a class="active" href="index.html">Inicio</a>
+      <a href="solicitudes.html">Solicitudes</a>
+      <a href="inventario.html">Inventario</a>
+      <a href="priorizacion.html">Priorización</a>
+      <a href="confirmacion.html">Confirmación</a>
+      <a href="auditoria.html">Auditoría</a>
+    </div>
+  </div>
+</nav>
 
-    <main class="contenedor-principal">
-        <section class="bienvenida">
-            <h2>Panel de Control Logístico</h2>
-            <p>Monitoreo en tiempo real de recursos de emergencia y apoyo humanitario.</p>
-        </section>
+<main class="container">
 
-        <section class="modulos-grid">
-            <!-- Tarjeta Módulo 1 -->
-            <article class="tarjeta-modulo">
-                <h3>1. Solicitudes y Existencias</h3>
-                <p>Registra necesidades en campo y consulta lotes disponibles.</p>
-                <a href="solicitudes.html" class="btn-primario">Ingresar Solicitud</a>
-            </article>
+  <header class="page-head">
+    <span class="eyebrow">Operación Nexo · Piloto</span>
+    <h1 class="title">Coordinación de recursos de emergencia, con control y trazabilidad.</h1>
+    <p class="lede">Un flujo único que conecta la recepción de solicitudes con el inventario real, recomienda el centro más adecuado y deja cada decisión registrada.</p>
+  </header>
 
-            <!-- Tarjeta Módulo 2 -->
-            <article class="tarjeta-modulo">
-                <h3>2. Priorización y Despacho</h3>
-                <p>Estima el riesgo de desabasto y evalúa recomendaciones logísticas.</p>
-                <a href="despacho.html" class="btn-primario">Ver Casos Críticos</a>
-            </article>
+  <!-- Indicadores -->
+  <div class="grid c4">
+    <div class="card stat">
+      <div class="label">Tiempo de asignación</div>
+      <div class="value">60 <small>min</small></div>
+      <div class="meta">Línea base · Meta ≤ 30 min</div>
+      <div class="meter"><span style="width:100%"></span></div>
+    </div>
+    <div class="card stat">
+      <div class="label">Discrepancias</div>
+      <div class="value">8 <small>%</small></div>
+      <div class="meta">Línea base · Meta ≤ 2 %</div>
+      <div class="meter"><span style="width:100%"></span></div>
+    </div>
+    <div class="card stat">
+      <div class="label">Registros (SQL)</div>
+      <div class="value">1,000</div>
+      <div class="meta">Datos sintéticos de operación</div>
+      <div class="meter soft"><span style="width:100%"></span></div>
+    </div>
+    <div class="card stat">
+      <div class="label">Eventos (NoSQL)</div>
+      <div class="value">5,000</div>
+      <div class="meta">Bitácora y telemetría</div>
+      <div class="meter soft"><span style="width:100%"></span></div>
+    </div>
+  </div>
 
-            <!-- Tarjeta Módulo 3 -->
-            <article class="tarjeta-modulo">
-                <h3>3. Confirmación y Conciliación</h3>
-                <p>Autoriza reservas atómicas y audita la bitácora inmutable.</p>
-                <a href="conciliacion.html" class="btn-primario">Auditar Movimientos</a>
-            </article>
-        </section>
-    </main>
+  <!-- Módulos -->
+  <h2 class="section">Módulos</h2>
+  <p class="section-sub">Tres módulos interconectados cubren todo el ciclo de una emergencia.</p>
+  <div class="grid c3">
+    <a class="card" href="solicitudes.html">
+      <span class="num">01</span>
+      <h3>Solicitudes y existencias</h3>
+      <p>Registro validado de necesidades y consulta de lotes disponibles por centro.</p>
+    </a>
+    <a class="card" href="priorizacion.html">
+      <span class="num">02</span>
+      <h3>Priorización y despacho</h3>
+      <p>Estimación de desabasto y recomendación explicable de un centro factible.</p>
+    </a>
+    <a class="card" href="confirmacion.html">
+      <span class="num">03</span>
+      <h3>Confirmación y conciliación</h3>
+      <p>Reserva única con bloqueo transaccional y conciliación de movimientos.</p>
+    </a>
+  </div>
 
-    <footer class="footer-principal">
-        <p>Operación Nexo - Equipo 5 | Rescate Delta &copy; 2026</p>
-    </footer>
+  <!-- Flujo -->
+  <h2 class="section">Flujo de operación</h2>
+  <p class="section-sub">De la solicitud a la auditoría, con una persona autorizando cada decisión crítica.</p>
+  <div class="flow-wrap">
+    <div class="flow">
+      <div class="step"><span class="num">1</span><h4>Registro</h4><p>El operador captura la solicitud con datos obligatorios.</p></div>
+      <div class="step"><span class="num">2</span><h4>Consulta</h4><p>Se evalúa el inventario factible por lote y centro.</p></div>
+      <div class="step"><span class="num">3</span><h4>Recomendación</h4><p>El sistema propone un centro y explica por qué.</p></div>
+      <div class="step"><span class="num">4</span><h4>Autorización</h4><p>El supervisor aprueba o rechaza la reserva.</p></div>
+      <div class="step"><span class="num">5</span><h4>Conciliación</h4><p>Se registra la salida y se compara contra el inventario físico.</p></div>
+    </div>
+  </div>
 
-    <!-- Vinculación del archivo JS -->
-    <script src="js/app.js"></script>
+  <!-- Perfiles -->
+  <h2 class="section">Perfiles operativos</h2>
+  <div class="grid c4" style="margin-top:16px">
+    <div class="card"><h3>Operador</h3><p>Captura solicitudes y consulta su estado en tiempo real.</p></div>
+    <div class="card"><h3>Supervisor</h3><p>Revisa la recomendación y autoriza la salida del inventario.</p></div>
+    <div class="card"><h3>Auditor</h3><p>Consulta la bitácora y reconstruye cada operación.</p></div>
+    <div class="card"><h3>Resp. de inventario</h3><p>Confirma cantidades físicas y asienta movimientos.</p></div>
+  </div>
+
+  <!-- IA responsable -->
+  <h2 class="section">Inteligencia artificial responsable</h2>
+  <div class="card dark" style="margin-top:16px">
+    <h3 style="font-family:var(--serif);font-size:20px">La IA recomienda. Una persona decide.</h3>
+    <p style="max-width:720px;margin-top:8px">El sistema no automatiza el despacho de recursos críticos: estima riesgo y sugiere un centro, siempre con su justificación. Cada acción queda firmada en una bitácora inmutable y no se almacenan datos personales reales.</p>
+  </div>
+
+</main>
+
+<footer><div class="inner"><span>Rescate Delta · Operación Nexo</span><span>Datos sintéticos de demostración</span></div></footer>
 </body>
 </html>
