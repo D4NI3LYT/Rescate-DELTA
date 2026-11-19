@@ -400,3 +400,19 @@ footer .inner {
   flex-wrap: wrap;
   gap: 8px;
 }
+
+/* Alinear el logo y el nombre horizontalmente */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+/* Controlar el tamaño y forma de la imagen */
+.brand-logo {
+  height: 36px;       /* Ajusta este valor según el alto de tu navbar */
+  width: 36px;        /* Mantiene proporción cuadrada si tu logo es un ícono */
+  object-fit: cover;  /* Evita que la imagen se deforme */
+  border-radius: 6px; /* Opcional: suaviza las esquinas del fondo blanco/negro del jpeg */
+}
